@@ -17,6 +17,7 @@ class CreateRestaurantMenuitemTable extends Migration
             $table->id();
             $table->integer('restaurant_menunumber');
             $table->foreign('restaurant_menunumber')->references('menunumber')->on('restaurant');
+            $table->integer('submenu');
             $table->unsignedBigInteger('menuitem_id');
             $table->foreign('menuitem_id')->references('id')->on('menuitem');
         });
