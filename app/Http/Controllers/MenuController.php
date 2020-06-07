@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
-  public function show($menu, $submenu){
-    if($submenu = 'all'){
-    $menulist =  DB::table('restaurant_menuitem')->find('menuitem_id')->get();
+  public function show($submenu){
+
+    if($submenu == 'all'){
+      $menulist =  DB::table('menuitem')->leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->groupBy('menuitem_id')->get();
     }else{
-    $menulist =  DB::table('restaurant_menuitem')->find('menuitem_id')->where('submenu','=', $submenu)->get();
+      $menulist =  DB::table('menuitem')->leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where('submenu','=', $submenu)->groupBy('menuitem_id')->get();
     }
-    $menuitems = DB::table('menuitem')->where('id','=',$menulist)->get();
-    return response()->json($menuitems);
+    $menulist = $menulist->groupBy('menuitem_id');
+    return response()->json($menulist);
   }
 }
