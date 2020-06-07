@@ -17,9 +17,9 @@ class CreateMenuitemTable extends Migration
             $table->id();
             $table->string('naam');
             $table->string('beschrijving');
-            $table->string('allergenen');
-            $table->string('categorie');
-            $table->string('diet');
+            $table->string('allergenen')->nullable();
+            $table->string('categorie')->nullable();
+            $table->string('diet')->nullable();
             $table->float('prijs');
             $table->string('fotolocatie')->nullable();
             $table->boolean('chefSpecial');
