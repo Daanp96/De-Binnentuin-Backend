@@ -13,8 +13,14 @@ class MenuItemBestelling extends Seeder
     {
         DB::table('_menu_item')->insert([
           'Bestelling_id' => 1,
-          'MenuItem_id' => 'Hambuger',
+          'MenuItem_id' => 'Hamburger',
           'Aantal' => 1,
+        ]);
+
+        DB::table('_menu_item')->insert([
+          'Bestelling_id' => 2,
+          'MenuItem_id' => 'Koffie',
+          'Aantal' => 3,
         ]);
     }
 }

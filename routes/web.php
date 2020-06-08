@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/orders', 'adminController@getOrder');
 
+Route::get('/admin/{restaurant}', 'restaurantController@getInfo');
+
+Route::PATCH('/admin/{restaurant}/change', 'restaurantController@UpdateRestaurant');
+
+Route::get('/timeslots', 'TimeslotController@index');
+
 Route::get('/', function () {
     return view('welcome');
 });

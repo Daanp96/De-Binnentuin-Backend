@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(MenuItemBestelling::class);
+      //  $this->call(MenuItemBestelling::class);
+        $this->call(TimeslotSeeder::class);
     }
 }
