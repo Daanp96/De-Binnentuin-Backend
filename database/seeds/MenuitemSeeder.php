@@ -22,8 +22,8 @@ class MenuitemSeeder extends Seeder
       'fotolocatie' => '',
       'chefSpecial' => '1',
       'aantalVerkocht' => '0',
-    ],
-    [
+    ]);
+      DB::table('menuitem')->insert([
       'id' => '2',
       'naam' => 'tosti',
       'beschrijving' => 'tosti met kaas',

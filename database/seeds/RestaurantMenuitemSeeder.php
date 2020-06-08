@@ -22,11 +22,6 @@ class RestaurantMenuitemSeeder extends Seeder
               'restaurant_menunumber' => 1,
               'submenu' => 'fanta',
               'menuitem_id' => '1',
-            ),array(
-              'id' => '3',
-              'restaurant_menunumber' => 1,
-              'submenu' => 'drinken',
-              'menuitem_id' => '2',
             )
           ));
     }

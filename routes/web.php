@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/menu/{submenu}', 'MenuController@show');
+
+Route::get('/admin/menu/{menunumber}', 'AdminController@getMenu');
