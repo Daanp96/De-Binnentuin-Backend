@@ -10,7 +10,6 @@ class LandingController extends Controller
   public function show(){
     $lowestTime = DB::table('timeslots')->orderBy('TimeStart', 'ASC')->get()->pluck('TimeStart')->first();
     $highestTime =  DB::table('timeslots')->orderBy('TimeStop', 'DESC')->get()->pluck('TimeStop')->first();
-    echo $lowestTime;
-    echo $highestTime;
+    return response()->json([$lowestTime, $highestTime]);
   }
 }
