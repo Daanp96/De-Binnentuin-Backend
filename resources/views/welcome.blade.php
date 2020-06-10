@@ -78,7 +78,14 @@
                     @endauth
                 </div>
             @endif
+            <form action="/admin/change"  method="POST">
+              {{ csrf_field() }}
+              {{ method_field('PATCH') }}
 
+              <input type="text" name="name" value="binnentuin">
+              <input type="number" name="isOpen" value="">
+              <input type='submit' value="submit">
+            </form>
             <div class="content">
                 <div class="title m-b-md">
                     De Binnentuin

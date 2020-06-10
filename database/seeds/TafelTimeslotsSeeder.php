@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class TafelTimeslotsSeeder extends Seeder
 {
@@ -11,6 +12,9 @@ class TafelTimeslotsSeeder extends Seeder
      */
     public function run()
     {
-        //
+      DB::table('timeslots')->insert([
+        'TimeStart' => new Carbon('11:00'),
+        'TimeStop' => new Carbon('12:00'),
+      ]);
     }
 }
