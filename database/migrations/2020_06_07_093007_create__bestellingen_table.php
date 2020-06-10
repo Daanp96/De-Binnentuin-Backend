@@ -31,6 +31,6 @@ class CreateBestellingenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_bestellingen');
+        Schema::dropIfExists('bestellingen');
     }
 }

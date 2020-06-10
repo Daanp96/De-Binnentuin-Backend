@@ -27,6 +27,6 @@ class CreateTimeslotsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_timeslots');
+        Schema::dropIfExists('timeslots');
     }
 }
