@@ -11,13 +11,30 @@ class MenuitemSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('menuitem')->insert([
-            'naam' => 'Ananas',
-            'beschrijving' => 'Een lekkere ananas, heel lekker op een pizza',
-            'categorie' => 'Fruit',
-            'prijs' => 4.20,
-            'chefSpecial' => True,
-            'aantalVerkocht' => 0
-        ]);
+      DB::table('menuitem')->insert(array(
+        array(
+          'id' => '1',
+          'naam' => 'fanta',
+          'beschrijving' => 'drinken',
+          'allergenen' => '',
+          'categorie' => 'drinken',
+          'diet' => '',
+          'prijs' => '5.00',
+          'fotolocatie' => '',
+          'chefSpecial' => '1',
+          'aantalVerkocht' => '0',
+        ), array(
+          'id' => '2',
+          'naam' => 'tosti',
+          'beschrijving' => 'tosti met kaas',
+          'allergenen' => '',
+          'categorie' => 'brood',
+          'diet' => '',
+          'prijs' => '4.00',
+          'fotolocatie' => '',
+          'chefSpecial' => '0',
+          'aantalVerkocht' => '0',
+        )  
+      ));
     }
 }
