@@ -11,7 +11,8 @@ class MenuitemSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('menuitem')->insert([
+      DB::table('menuitem')->insert(array(
+        array(
       'id' => '1',
       'naam' => 'fanta',
       'beschrijving' => 'drinken',
@@ -22,8 +23,8 @@ class MenuitemSeeder extends Seeder
       'fotolocatie' => '',
       'chefSpecial' => '1',
       'aantalVerkocht' => '0',
-    ],
-    [
+    ),
+    array(
       'id' => '2',
       'naam' => 'tosti',
       'beschrijving' => 'tosti met kaas',
@@ -34,6 +35,7 @@ class MenuitemSeeder extends Seeder
       'fotolocatie' => '',
       'chefSpecial' => '0',
       'aantalVerkocht' => '0',
-    ]);
+    )
+  ));
     }
 }
