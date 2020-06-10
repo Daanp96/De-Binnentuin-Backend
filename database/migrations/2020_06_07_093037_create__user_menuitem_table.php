@@ -29,6 +29,6 @@ class CreateUserMenuitemTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_user_menuitem');
+        Schema::dropIfExists('user_menuitem');
     }
 }
