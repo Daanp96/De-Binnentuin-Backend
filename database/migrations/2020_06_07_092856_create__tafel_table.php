@@ -29,6 +29,6 @@ class CreateTafelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_tafel');
+        Schema::dropIfExists('tafel');
     }
 }
