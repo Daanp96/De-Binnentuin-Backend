@@ -37,15 +37,15 @@ class AdminController extends Controller
       }
 
       public function UpdateRestaurant(Request $request){
-        $open_close = Restaurant::where('name', '=', 'binnentuin')->first();
+        $open_close = Restaurant::where('name', '=', $request->name)->first();
         if($request->isOpen == '1'){
           $request->isOpen = true;
         }
         else{
           $request->isOpen = false;
         }
-        Restaurant::where('name', '=', 'binnentuin')->update(['isOpen' => $request->isOpen]);
-        $open_close = Restaurant::where('name', '=', 'binnentuin')->first();
+        Restaurant::where('name', '=', $request->name)->update(['isOpen' => $request->isOpen]);
+        $open_close = Restaurant::where('name', '=', $request->name)->first();
         return $open_close;
         //$open_close->save();
       }
