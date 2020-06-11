@@ -20,6 +20,8 @@ class CreateBestellingenTable extends Migration
             $table->boolean('betaald');
             $table->bigInteger('tafeltimeslots_id')->unsigned();
             $table->foreign('tafeltimeslots_id')->references('id')->on('tafel_timeslots');
+            $table->string('opmerking')->nullable();
+            $table->float('prijsVoledigeBestelling');
             $table->integer("hoeveelMensen");
         });
     }
