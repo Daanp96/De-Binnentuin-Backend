@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Menuitem;
 
 class MenuitemController extends Controller
@@ -18,7 +19,7 @@ class MenuitemController extends Controller
         return response()->json($menulist);
     }
 
-    public function getItems(){
+    public function index(){
         return Menuitem::all();
     }
 }
