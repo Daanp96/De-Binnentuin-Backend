@@ -80,7 +80,7 @@
             @endif
             <form action="/admin/change"  method="POST">
               {{ csrf_field() }}
-              {{ method_field('PATCH') }}
+              {{ method_field('PUT') }}
 
               <input type="text" name="name" value="binnentuin">
               <input type="number" name="isOpen" value="">

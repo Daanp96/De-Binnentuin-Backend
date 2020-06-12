@@ -20,7 +20,11 @@ Route::get('/', function () {
 Route::get('/menu/{submenu}', 'MenuController@show');
 Route::get('/test', 'AdminController@test');
 
+Route::get('/admin/menuedit, AdminController@showItem');
+
 Route::get('/admin/menu/{menunumber}', 'AdminController@getMenu');
 Route::get('/admin/timeslots', 'AdminController@getTimeslot');
 Route::get('/admin/{restaurant}', 'AdminController@Restaurants');
-Route::patch('/admin/change', 'AdminController@UpdateRestaurant');
+//Route::patch('/admin/change', 'AdminController@UpdateRestaurant');
+Route::put('/admin/change', 'AdminController@UpdateRestaurant');
+//Route::put('/admin/change', array('middleware'=> 'cors', 'uses' => 'AdminController@UpdateRestaurant'));
