@@ -49,4 +49,29 @@ class AdminController extends Controller
         return $open_close;
         //$open_close->save();
       }
+
+      public function indexMenuItem($itemNaam){
+          $menuItem = menuitem::where('naam', '=', $itemNaam)->first();
+          return response()->json($menuItem);
+      }
+
+      public function updateMenuItem(Request $request){
+      //  return $request;
+        if($request->special == null){
+          $request->special = false;
+        }
+        else{
+          $request->special = true;
+        }
+        menuitem::where('id', '=', $request->id)
+        ->update(['naam' => $request->naam,
+        'prijs' => $request->prijs,
+        'beschrijving' => $request->beschrijving,
+        'chefSpecial' => $request->special,
+         'categorie' => $request->categorie]);
+      }
+
+      public function updateTimeslots(Request $request){
+
+      }
 }

@@ -23,11 +23,16 @@ return [
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['Content-Type, X-Auth-Token, Origin'],
+    'allowed_headers' => ['Authorization, Content-Type, X-Auth-Token, Origin'],
 
-    'exposed_headers' => [],
+    'exposed_headers' => [         'Cache-Control',
+            'Content-Language',
+            'Content-Type',
+            'Expires',
+            'Last-Modified',
+            'Pragma'],
 
-    'max_age' => 0,
+    'max_age' => 60 * 60 * 24,
 
     'supports_credentials' => false,
 

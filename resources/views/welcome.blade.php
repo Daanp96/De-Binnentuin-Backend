@@ -86,6 +86,34 @@
               <input type="number" name="isOpen" value="">
               <input type='submit' value="submit">
             </form>
+
+            <form action="/admin/menuitem/update" method="post">
+              {{ csrf_field() }}
+              {{ method_field('PUT') }}
+              <input type="hidden" id="id" name="id" value="2" />
+                <label >
+                  Naam:
+
+                </label>  <input type="text" id="naam" name="naam" value="tosti" />
+                <label >
+                  Prijs:
+
+                </label>    <input type="number" id="prijs" name="prijs" value="4.50" step="0.01"/>
+
+                <label >
+                  Beschrijving:
+
+               </label>    <textarea id="beschrijving" name="beschrijving"value="tekst"></textarea>
+
+                <label >
+                  Categorie:
+
+              </label><input type="text" id="categorie" name="categorie" value="brood"/>
+              <label for="special">Chef's special: </label>
+              <input type="checkbox" id="special" name="special" value='0'/> 
+              <input type="submit" value="Veranderen"/>
+
+        </form>
             <div class="content">
                 <div class="title m-b-md">
                     De Binnentuin
