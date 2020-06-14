@@ -57,12 +57,7 @@ class AdminController extends Controller
 
       public function updateMenuItem(Request $request){
       //  return $request;
-        if($request->special == null){
-          $request->special = false;
-        }
-        else{
-          $request->special = true;
-        }
+
         menuitem::where('id', '=', $request->id)
         ->update(['naam' => $request->naam,
         'prijs' => $request->prijs,
