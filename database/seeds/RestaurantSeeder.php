@@ -11,6 +11,16 @@ class RestaurantSeeder extends Seeder
      */
     public function run()
     {
-        //
+      DB::table("restaurant")->insert([
+        "name" => "Binnentuin",
+        "menunumber" => 1,
+        "isOpen" => true,
+      ]);
+
+      DB::table("restaurant")->insert([
+        "name" => "Dakterras",
+        "menunumber" => 2,
+        "isOpen" => false,
+      ]);
     }
 }
