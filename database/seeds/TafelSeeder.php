@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class TafelSeeder extends Seeder
 {
@@ -11,6 +12,10 @@ class TafelSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('Tafel')->insert([
+          'tafelnummer' => 10,
+          'restaurant_naam' => 'binnentuin',
+          'maxAantalMensen' => 4
+        ]);
     }
 }

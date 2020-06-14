@@ -15,6 +15,11 @@ class DatabaseSeeder extends Seeder
       //  $this->call(RestaurantSeeder::class);
       //  $this->call(MenuitemSeeder::class);
       //  $this->call(RestaurantMenuitemSeeder::class);
-      $this->call(TafelTimeslotsSeeder::class);
+    // $this->call(TafelTimeslotsSeeder::class);
+      //$this->call(RoleSeeder::class);
+    //  $this->call(UserSeeder::class);
+  //  $this->call(TafelSeeder::class);
+    //  $this->call(BestellingenSeeder::class);
+      $this->call(MenuitemBestellingenSeeder::class);
     }
 }

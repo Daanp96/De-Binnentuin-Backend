@@ -12,7 +12,7 @@ class CreateMenuitemBestellingenTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {  
         Schema::create('menuitem_bestellingen', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('bestellingen_id');
