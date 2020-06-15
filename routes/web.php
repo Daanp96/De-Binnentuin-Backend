@@ -26,6 +26,8 @@ Route::put('/admin/timeslots/update', 'AdminController@updateTimeslots');
 Route::get('/admin/menuitem/{item}', 'AdminController@indexMenuItem');
 Route::put('/admin/menuitem/update', 'AdminController@updateMenuItem');
 
+Route::get('admin/kok', 'AdminController@showBestellingen');
+
 Route::get('/admin/menuedit, AdminController@showItem');
 
 Route::get('/admin/menu/{menunumber}', 'AdminController@getMenu');

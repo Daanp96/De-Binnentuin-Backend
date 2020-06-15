@@ -8,6 +8,8 @@ use App\restaurant_menuitem;
 use App\menuitem;
 use App\Timeslots;
 use App\restaurant;
+use App\Bestelling;
+use App\MenuItem_Bestellingen;
 
 class AdminController extends Controller
 {
@@ -68,5 +70,17 @@ class AdminController extends Controller
 
       public function updateTimeslots(Request $request){
 
+      }
+
+      public function showBestellingen(){
+        $bestellingen = Bestelling::join('menuitem_bestellingen', 'menuitem_bestellingen.bestellingen_id', '=', 'bestellingen.id')
+        ->leftjoin('menuitem', 'menuitem.id', '=', 'menuItem_Bestellingen.menuitem_id')
+        ->leftjoin('tafel_timeslots', 'tafel_timeslots.id', '=', 'bestellingen.tafeltimeslots_id')
+        ->leftjoin('timeslots', 'timeslots.id', '=', 'tafel_timeslots.timeslots_id')
+        ->select('bestellingen.id', 'timeslots.TimeStart', 'timeslots.TimeStop', Bestelling::raw("(GROUP_CONCAT(menuitem.naam SEPARATOR ',')) as 'items'"), Bestelling::raw("(GROUP_CONCAT(menuItem_Bestellingen.aantal SEPARATOR ',')) as 'aantal'"))
+        ->groupBy('bestellingen.id')
+        ->orderBy('timeslots.TimeStart')
+        ->get();
+        return response()->json($bestellingen);
       }
 }
