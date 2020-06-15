@@ -15,18 +15,23 @@ class RestaurantMenuitemSeeder extends Seeder
             array(
               'id' => '1',
               'restaurant_menunumber' => 1,
-              'submenu' => 'drinken',
+              'submenu' => 'categorie',
               'menuitem_id' => '1',
             ),array(
               'id' => '2',
               'restaurant_menunumber' => 1,
-              'submenu' => 'fanta',
-              'menuitem_id' => '1',
+              'submenu' => 'categorie',
+              'menuitem_id' => '15',
             ),array(
               'id' => '3',
               'restaurant_menunumber' => 1,
-              'submenu' => 'drinken',
-              'menuitem_id' => '1',
+              'submenu' => 'categorie',
+              'menuitem_id' => '6',
+            ),array(
+              'id' => '4',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'categorie',
+              'menuitem_id' => '20',
             )
           ));
     }
