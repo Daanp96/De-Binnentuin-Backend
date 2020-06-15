@@ -13,7 +13,9 @@
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
-        "laravel/tinker": "^2.0"
+        "laravel/passport": "^9.2",
+        "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
@@ -52,6 +54,8 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
+            "if [ \"$OAUTH_PUBLIC_KEY\" != \"\" ]; then echo \"$OAUTH_PUBLIC_KEY\" > storage/oauth-public.key; fi",
+            "if [ \"$OAUTH_PRIVATE_KEY\" != \"\" ]; then echo \"$OAUTH_PRIVATE_KEY\" > storage/oauth-private.key; fi"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
