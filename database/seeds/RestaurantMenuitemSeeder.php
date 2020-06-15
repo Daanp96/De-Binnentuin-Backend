@@ -26,7 +26,7 @@ class RestaurantMenuitemSeeder extends Seeder
               'id' => '3',
               'restaurant_menunumber' => 1,
               'submenu' => 'drinken',
-              'menuitem_id' => '2',
+              'menuitem_id' => '1',
             )
           ));
     }

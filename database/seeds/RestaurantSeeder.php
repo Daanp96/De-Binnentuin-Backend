@@ -16,12 +16,13 @@ class RestaurantSeeder extends Seeder
           'name' => 'binnentuin',
           'menunumber' => '1',
           'isOpen' => '1',
-          ),
-        array(
+        ),array(
           'name' => 'dakterras',
           'menunumber' => '2',
           'isOpen' => '0',
-          )
-        ));
+        )
+      )
+    );
+
     }
 }
