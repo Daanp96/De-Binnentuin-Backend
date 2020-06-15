@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/bestellingen/{invoer}', 'BestellingenController@show');
+Route::put('/bestellingen/{invoer}/update', 'BestellingenController@update');
+Route::get('/users/{invoer}', 'UsersController@show');
