@@ -19,3 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get("/{restaurant}/tafels", "TafelController@RestaurantIndex");
+
+Route::get("/timeslots", "TimeslotsController@index");
+
+Route::get("/timeslots/tafel/{tafel}/{day}/{month}/{year}","TafelTimeslotsController@Show");
