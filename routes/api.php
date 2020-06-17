@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::put('/admin/timeslots/update', 'AdminController@updateTimeslots');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

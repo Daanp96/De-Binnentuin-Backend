@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use CARBON\carbon;
 
 class TimeslotsSeeder extends Seeder
 {

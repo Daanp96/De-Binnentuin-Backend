@@ -87,7 +87,20 @@
               <input type='submit' value="submit">
             </form>
 
-            <form action="/admin/menuitem/update" method="post">
+            <form action="/api/admin/timeslots/update"  method="POST">
+              {{ csrf_field() }}
+              {{ method_field('PUT') }}
+
+              <input type="time" name="timestart[]" defaultValue={this.props.start} />
+<p> - </p>
+<input type="time" name="timestop[]" defaultValue={this.props.end} />
+
+
+
+  <input type='submit'  value="submit">
+            </form>
+
+          <!--  <form action="/admin/menuitem/update" method="post">
               {{ csrf_field() }}
               {{ method_field('PUT') }}
               <input type="hidden" id="id" name="id" value="2" />
@@ -110,10 +123,10 @@
 
               </label><input type="text" id="categorie" name="categorie" value="brood"/>
               <label for="special">Chef's special: </label>
-              <input type="checkbox" id="special" name="special" value='0'/> 
+              <input type="checkbox" id="special" name="special" value='0'/>
               <input type="submit" value="Veranderen"/>
 
-        </form>
+        </form> -->
             <div class="content">
                 <div class="title m-b-md">
                     De Binnentuin

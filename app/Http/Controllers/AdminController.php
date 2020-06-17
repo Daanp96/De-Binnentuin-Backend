@@ -23,7 +23,7 @@ class AdminController extends Controller
     }
 
     public function getTimeslot(){
-      $timeslots = Timeslots::all();
+      $timeslots = Timeslots::orderBy('TimeStart')->get();
       return response()->json($timeslots);
       }
 
@@ -70,6 +70,29 @@ class AdminController extends Controller
 
       public function updateTimeslots(Request $request){
 
+      //loopt door alle Requests en doet het in variablen die we kunnen aanroepen
+        $timestarts = [];
+        foreach($request->timestart as $key=>$val){
+          array_push($timestarts, $val);
+        }
+        $timestops = [];
+        foreach($request->timestop as $key=>$val){
+          array_push($timestops, $val);
+        }
+        //update de benodigde eerste timeslot
+        timeslots::where('id', '=', 1)->update([
+          'TimeStart' => $timestarts[0],
+          'TimeStop' => $timestops[0],
+        ]);
+        //delete de andere timeslots
+        timeslots::where('id', '!=', 1)->delete();
+        
+        for($i = 1; $i < count($timestarts); $i++){
+          $newTimeslot = new Timeslots();
+          $newTimeslot->TimeStart = $timestarts[$i];
+          $newTimeslot->TimeStop = $timestops[$i];
+          $newTimeslot->save();
+        }
       }
 
       public function showBestellingen(){
