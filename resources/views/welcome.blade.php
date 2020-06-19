@@ -100,6 +100,15 @@
                 <label >
                   Categorie:
               </label><input type="text" id="categorie" name="categorie" value="brood"/>
+              <label>
+  Restaurant Binnentuin:
+</label>
+<input type="checkbox" id="binnentuin" name="binnentuin"  />
+<label>
+Restaurant dakterras:
+</label>
+<input type="checkbox" id="binnentuin" name="dakterras"  />
+
               <label for="special">Chef's special: </label>
               <input type="checkbox" id="special" name="special" value='0'/>
               <input type="submit" value="Veranderen"/>

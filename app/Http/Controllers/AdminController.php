@@ -57,9 +57,10 @@ class AdminController extends Controller
           return response()->json($menuItem);
       }
 
+      //maakt een nieuw item aan en voegt ze toen
       public function createMenuItem(Request $request){
+        // nieuwe item
         $newItem = new menuitem();
-        //return $request;
         $newItem->naam = $request->naam;
         $newItem->beschrijving = $request->beschrijving;
         $newItem->categorie = $request->categorie;
@@ -68,8 +69,28 @@ class AdminController extends Controller
         }else{
             $newItem->chefSpecial = false;
         }
+      //  $newItem->save();
 
-        $newItem->save();
+        $newlyMadeItem = menuitem::where('naam', '=', $request->naam)->first();
+
+        //toevoegen aan restaurant
+        $newRestaurantItem = new restaurant_menuitem();
+        $newRestaurantItem->menuitem_id = $newlyMadeItem->id;
+        $newRestaurantItem->submenu = 'categorie';
+
+        $newRestaurantItem_second = new restaurant_menuitem();
+        $newRestaurantItem_second->menuitem_id = $newlyMadeItem->id;
+        $newRestaurantItem_second->submenu = 'categorie';
+        if ($request->binnentuin == 'on'){
+         $newRestaurantItem->restaurant_menunumber = '1';
+         $newRestaurantItem->save();
+       }
+
+        if ($request->dakterras == 'on'){
+          $newRestaurantItem_second->restaurant_menunumber = '2';
+          $newRestaurantItem_second->save();
+        }
+
       }
 
       public function updateMenuItem(Request $request){
