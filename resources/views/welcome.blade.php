@@ -107,7 +107,7 @@
 <label>
 Restaurant dakterras:
 </label>
-<input type="checkbox" id="binnentuin" name="dakterras"  />
+<input type="checkbox" id="binnentuin" name="dakterras"/>
 
               <label for="special">Chef's special: </label>
               <input type="checkbox" id="special" name="special" value='0'/>

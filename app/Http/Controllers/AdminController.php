@@ -57,6 +57,12 @@ class AdminController extends Controller
           return response()->json($menuItem);
       }
 
+      public function deleteRestaurantItem(Request $request){
+          restaurant_menuitem::where('menuitem_id', '=', $request->item_id)
+          ->where('restaurant_menunumber', '=', $request->restaurant)
+          ->delete();
+      }
+
       //maakt een nieuw item aan en voegt ze toen
       public function createMenuItem(Request $request){
         // nieuwe item
@@ -69,7 +75,7 @@ class AdminController extends Controller
         }else{
             $newItem->chefSpecial = false;
         }
-      //  $newItem->save();
+        $newItem->save();
 
         $newlyMadeItem = menuitem::where('naam', '=', $request->naam)->first();
 

@@ -27,3 +27,4 @@ Route::get('menu/{restaurant}/{all}', 'MenuitemController@show');
 Route::get('/admin/menuitem/{item}', 'AdminController@indexMenuItem');
 Route::put('/admin/menuitem/update', 'AdminController@updateMenuItem');
 Route::post('/admin/menuitem/create', 'AdminController@createMenuItem');
+Route::delete('/admin/restaurant_item/delete', 'AdminController@deleteRestaurantItem');
