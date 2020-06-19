@@ -52,9 +52,24 @@ class AdminController extends Controller
         //$open_close->save();
       }
 
-      public function indexMenuItem($id){
-          $menuItem = menuitem::where('id', '=', $id)->first();
+      public function indexMenuItem($naam){
+          $menuItem = menuitem::where('naam', '=', $naam)->first();
           return response()->json($menuItem);
+      }
+
+      public function createMenuItem(Request $request){
+        $newItem = new menuitem();
+        //return $request;
+        $newItem->naam = $request->naam;
+        $newItem->beschrijving = $request->beschrijving;
+        $newItem->categorie = $request->categorie;
+        if($request->special != null){
+            $newItem->chefSpecial = $request->special;
+        }else{
+            $newItem->chefSpecial = false;
+        }
+
+        $newItem->save();
       }
 
       public function updateMenuItem(Request $request){

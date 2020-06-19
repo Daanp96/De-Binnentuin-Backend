@@ -84,6 +84,26 @@
                     De Binnentuin
                 </div>
             </div>
+
+            <form action="api/admin/menuitem/create" method="post">
+              {{ csrf_field() }}
+              <input type="hidden" id="id" name="id" value="2" />
+                <label >
+                  Naam:
+                </label>  <input type="text" id="naam" name="naam" value="tosti" />
+                <label >
+                  Prijs:
+                </label>    <input type="number" id="prijs" name="prijs" value="4.50" step="0.01"/>
+                <label >
+                  Beschrijving:
+               </label>    <textarea id="beschrijving" name="beschrijving"value="tekst"></textarea>
+                <label >
+                  Categorie:
+              </label><input type="text" id="categorie" name="categorie" value="brood"/>
+              <label for="special">Chef's special: </label>
+              <input type="checkbox" id="special" name="special" value='0'/>
+              <input type="submit" value="Veranderen"/>
+        </form>
         </div>
     </body>
 </html>
