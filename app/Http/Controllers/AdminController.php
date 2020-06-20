@@ -100,8 +100,6 @@ class AdminController extends Controller
       }
 
       public function updateMenuItem(Request $request){
-      //  return $request;
-
         menuitem::where('id', '=', $request->id)
         ->update(['naam' => $request->naam,
         'prijs' => $request->prijs,
@@ -115,7 +113,8 @@ class AdminController extends Controller
       }
 
       public function showBestellingen(){
-        $bestellingen = Bestelling::join('menuitem_bestellingen', 'menuitem_bestellingen.bestellingen_id', '=', 'bestellingen.id')
+        $bestellingen = Bestelling::where('isKlaar', '=', 0)
+        ->join('menuitem_bestellingen', 'menuitem_bestellingen.bestellingen_id', '=', 'bestellingen.id')
         ->leftjoin('menuitem', 'menuitem.id', '=', 'menuItem_Bestellingen.menuitem_id')
         ->leftjoin('tafel_timeslots', 'tafel_timeslots.id', '=', 'bestellingen.tafeltimeslots_id')
         ->leftjoin('timeslots', 'timeslots.id', '=', 'tafel_timeslots.timeslots_id')
@@ -124,5 +123,9 @@ class AdminController extends Controller
         ->orderBy('timeslots.TimeStart')
         ->get();
         return response()->json($bestellingen);
+      }
+
+      public function updateBestelling(Request $request){
+        Bestelling::where('id', '=', $request->bestelling_id)->update(['isKlaar' => true]);
       }
 }
