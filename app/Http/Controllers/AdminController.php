@@ -95,8 +95,6 @@ class AdminController extends Controller
       }
 
       public function updateMenuItem(Request $request){
-      //  return $request;
-
         menuitem::where('id', '=', $request->id)
         ->update(['naam' => $request->naam,
         'prijs' => $request->prijs,
@@ -133,19 +131,18 @@ class AdminController extends Controller
 
       public function showBestellingen(){
         $bestellingen = Bestelling::where('isKlaar', '=', 0)
-          ->join('menuitem_bestellingen', 'menuitem_bestellingen.bestellingen_id', '=', 'bestellingen.id')
-          ->leftjoin('menuitem', 'menuitem.id', '=', 'menuItem_Bestellingen.menuitem_id')
-          ->leftjoin('tafel_timeslots', 'tafel_timeslots.id', '=', 'bestellingen.tafeltimeslots_id')
-          ->leftjoin('timeslots', 'timeslots.id', '=', 'tafel_timeslots.timeslots_id')
-          ->select('bestellingen.id', 'timeslots.TimeStart', 'timeslots.TimeStop', Bestelling::raw("(GROUP_CONCAT(menuitem.naam SEPARATOR ',')) as 'items'"), Bestelling::raw("(GROUP_CONCAT(menuItem_Bestellingen.aantal SEPARATOR ',')) as 'aantal'"))
-          ->groupBy('bestellingen.id')
-          ->orderBy('timeslots.TimeStart')
-          ->get();
-            $bestellingen = Bestelling::where('isKlaar', '=', 0)->get();
-          return response()->json($bestellingen);
+        ->join('menuitem_bestellingen', 'menuitem_bestellingen.bestellingen_id', '=', 'bestellingen.id')
+        ->leftjoin('menuitem', 'menuitem.id', '=', 'menuItem_Bestellingen.menuitem_id')
+        ->leftjoin('tafel_timeslots', 'tafel_timeslots.id', '=', 'bestellingen.tafeltimeslots_id')
+        ->leftjoin('timeslots', 'timeslots.id', '=', 'tafel_timeslots.timeslots_id')
+        ->select('bestellingen.id', 'timeslots.TimeStart', 'timeslots.TimeStop', Bestelling::raw("(GROUP_CONCAT(menuitem.naam SEPARATOR ',')) as 'items'"), Bestelling::raw("(GROUP_CONCAT(menuItem_Bestellingen.aantal SEPARATOR ',')) as 'aantal'"))
+        ->groupBy('bestellingen.id')
+        ->orderBy('timeslots.TimeStart')
+        ->get();
+        return response()->json($bestellingen);
       }
 
       public function updateBestelling(Request $request){
-    Bestelling::where('id', '=', $request->bestelling_id)->update(['isKlaar' => true]);
-  }
+        Bestelling::where('id', '=', $request->bestelling_id)->update(['isKlaar' => true]);
+      }
 }

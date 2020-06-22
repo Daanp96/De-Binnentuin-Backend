@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Bestelling extends Model
 {
     protected $table = "bestellingen";
-    public $timestamps = false;
+        public $timestamps = false;
 }

@@ -21,6 +21,7 @@ class CreateBestellingenTable extends Migration
             $table->bigInteger('tafeltimeslots_id')->unsigned();
             $table->foreign('tafeltimeslots_id')->references('id')->on('tafel_timeslots');
             $table->integer("hoeveelMensen");
+            $table->boolean('isKlaar')->default(false);
         });
     }
 
