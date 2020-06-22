@@ -7,6 +7,7 @@ use App\Bestellingen;
 
 class BestellingenController extends Controller
 {
+    //hier haal ik de bestelling op die gelijk staat aan de {invoer} in de route
     public function show($invoer){
       $opmerking = Bestellingen::where('user_id', '=', $invoer)->first();
       return $opmerking;

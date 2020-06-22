@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//alle {invoer} hier staat voor het id dat je wilt gebruiken
+//dus al wil je de eerste bestelling pak je /bestellingen/1
+//en /users/1 voor de eerste user
 Route::get('/bestellingen/{invoer}', 'BestellingenController@show');
 Route::put('/bestellingen/{invoer}/update', 'BestellingenController@update');
 Route::get('/users/{invoer}', 'UsersController@show');
+Route::put('/users/{invoer}/update', 'UsersController@update');
