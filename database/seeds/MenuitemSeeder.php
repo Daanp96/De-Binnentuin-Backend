@@ -78,7 +78,7 @@ class MenuitemSeeder extends Seeder
         // Toasts
         array(
           'naam' => 'Mack & Cheese',
-          'beschrijving' => 'Mackerel metl toastie',
+          'beschrijving' => 'Mackerel melt toastie',
           'allergenen' => '',
           'categorie' => 'Toasts',
           'diet' => '',
