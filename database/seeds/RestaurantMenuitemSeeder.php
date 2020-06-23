@@ -12,7 +12,7 @@ class RestaurantMenuitemSeeder extends Seeder
     public function run()
     {
           DB::table('restaurant_menuitem')->insert(array(
-            //snacks
+            //Snacks
             array(
               'id' => '1',
               'restaurant_menunumber' => 1,
@@ -116,7 +116,113 @@ class RestaurantMenuitemSeeder extends Seeder
               'restaurant_menunumber' => 1,
               'submenu' => 'Sandwiches',
               'menuitem_id' => '20',
+            ), 
+            // Hot Drinks
+            array(
+              'id' => '21',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Hot Drinks',
+              'menuitem_id' => '21',
+            ), array(
+              'id' => '22',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Hot Drinks',
+              'menuitem_id' => '22',
+            ), array(
+              'id' => '23',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Hot Drinks',
+              'menuitem_id' => '23',
+            ), array(
+              'id' => '24',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Hot Drinks',
+              'menuitem_id' => '24',
+            ), array(
+              'id' => '25',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Hot Drinks',
+              'menuitem_id' => '25',
+            ),
+            // Coffee
+            array(
+              'id' => '26',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Coffee',
+              'menuitem_id' => '26',
+            ), array(
+              'id' => '27',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Coffee',
+              'menuitem_id' => '27',
+            ), array(
+              'id' => '28',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Coffee',
+              'menuitem_id' => '28',
+            ), array(
+              'id' => '29',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Coffee',
+              'menuitem_id' => '29',
+            ), array(
+              'id' => '30',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Coffee',
+              'menuitem_id' => '30',
+            ), array(
+              'id' => '31',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Coffee',
+              'menuitem_id' => '31',
+            ), array(
+              'id' => '32',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Coffee',
+              'menuitem_id' => '32',
+            ), array(
+              'id' => '33',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Coffee',
+              'menuitem_id' => '33',
+            ), array(
+              'id' => '34',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Coffee',
+              'menuitem_id' => '34',
+            ),
+            // Cold Drinks
+            array(
+              'id' => '35',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Cold Drinks',
+              'menuitem_id' => '35',
+            ), array(
+              'id' => '36',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Cold Drinks',
+              'menuitem_id' => '36',
+            ), array(
+              'id' => '37',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Cold Drinks',
+              'menuitem_id' => '37',
+            ), array(
+              'id' => '38',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Cold Drinks',
+              'menuitem_id' => '38',
+            ), array(
+              'id' => '39',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Cold Drinks',
+              'menuitem_id' => '39',
+            ), array(
+              'id' => '40',
+              'restaurant_menunumber' => 1,
+              'submenu' => 'Cold Drinks',
+              'menuitem_id' => '40',
             )
-          ));
+          )); 
     }
 }
