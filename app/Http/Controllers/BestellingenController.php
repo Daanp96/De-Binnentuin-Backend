@@ -20,4 +20,10 @@ class BestellingenController extends Controller
         ]
       );
     }
+
+    public function sumUp($invoer){
+      $optelSom = Bestellingen::where('user_id', '=', $invoer)->where('betaald', '=', false)->sum('bestellingen.prijsVoledigeBestelling');
+
+      return $optelSom;
+    }
 }

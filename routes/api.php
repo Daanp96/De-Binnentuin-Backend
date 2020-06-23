@@ -22,3 +22,4 @@ Route::get('/bestellingen/{invoer}', 'BestellingenController@show');
 Route::put('/bestellingen/{invoer}/update', 'BestellingenController@update');
 Route::get('/users/{invoer}', 'UsersController@show');
 Route::put('/users/{invoer}/update', 'UsersController@update');
+Route::get('/bestellingen/{invoer}/rekening', 'BestellingenController@sumUp');
