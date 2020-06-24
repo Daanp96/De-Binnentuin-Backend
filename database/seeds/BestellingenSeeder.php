@@ -40,7 +40,7 @@ class BestellingenSeeder extends Seeder
 
         DB::table('bestellingen')->insert([
           'user_id' => 3,
-          'betaald' => true,
+          'betaald' => false,
           'tafeltimeslots_id' => 2,
           'opmerking' => '',
           'prijsVoledigeBestelling' => 7.5,
