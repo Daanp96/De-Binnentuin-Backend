@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 //dus al wil je de eerste bestelling pak je /bestellingen/1
 //en /users/1 voor de eerste user
 Route::get('/bestellingen/{invoer}', 'BestellingenController@show');
+Route::get('/bestellingen/{invoer}/laatsteBestellingen', 'BestellingenController@lastOrders');
 Route::put('/bestellingen/{invoer}/update', 'BestellingenController@update');
 Route::get('/users/{invoer}', 'UsersController@show');
 Route::put('/users/{invoer}/update', 'UsersController@update');

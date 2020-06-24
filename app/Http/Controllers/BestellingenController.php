@@ -13,6 +13,11 @@ class BestellingenController extends Controller
       return $opmerking;
     }
 
+    public function lastOrders($invoer){
+      $opmerking = Bestellingen::where('user_id', '=', $invoer)->take(5)->get();
+      return $opmerking;
+    }
+
     public function update(Request $request, $invoer){
       Bestellingen::where('user_id', '=', $invoer)->update(
         [
