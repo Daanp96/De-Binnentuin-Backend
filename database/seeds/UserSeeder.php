@@ -11,6 +11,44 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //
+    /*    DB::table('Users')->insert([
+     'naam' => 'rick',
+     'email' => 'rob@hotmail.com',
+     'password' => "AAA",
+     'rekeningNummer' => 'k',
+     'isMember' => false,
+     'adres' => 'nee',
+     'roles_id' => 2,
+   ]); */
+
+   DB::table('Users')->insert([
+     'naam' => 'Link',
+     'email' => 'Zelda@hotmail.com',
+     'password' => "kip",
+     'rekeningNummer' => 'k',
+     'isMember' => true,
+     'adres' => 'Leiden straat 34',
+     'roles_id' => 3,
+     ]);
+
+     DB::table('Users')->insert([
+       'naam' => 'Pikano',
+       'email' => 'pokemon@hotmail.com',
+       'password' => "testtest",
+       'rekeningNummer' => 'l',
+       'isMember' => false,
+       'adres' => 'Haarlem 2',
+       'roles_id' => 2,
+       ]);
+
+       DB::table('Users')->insert([
+         'naam' => 'Jerry',
+         'email' => 'plnt@hotmail.com',
+         'password' => "plntplnt",
+         'rekeningNummer' => '2',
+         'isMember' => true,
+         'adres' => 'Westlaan 21',
+         'roles_id' => 1,
+         ]);
     }
 }

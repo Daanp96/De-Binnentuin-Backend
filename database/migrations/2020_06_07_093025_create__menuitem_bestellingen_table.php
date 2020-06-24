@@ -19,6 +19,7 @@ class CreateMenuitemBestellingenTable extends Migration
             $table->foreign('bestellingen_id')->references('id')->on('bestellingen');
             $table->unsignedBigInteger('menuitem_id');
             $table->foreign('menuitem_id')->references('id')->on('menuitem');
+            $table->boolean('isKlaar')->default(0);
             $table->integer('aantal');
         });
     }

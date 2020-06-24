@@ -135,7 +135,7 @@ class AdminController extends Controller
         ->leftjoin('menuitem', 'menuitem.id', '=', 'menuItem_Bestellingen.menuitem_id')
         ->leftjoin('tafel_timeslots', 'tafel_timeslots.id', '=', 'bestellingen.tafeltimeslots_id')
         ->leftjoin('timeslots', 'timeslots.id', '=', 'tafel_timeslots.timeslots_id')
-        ->select('bestellingen.id', 'timeslots.TimeStart', 'timeslots.TimeStop', Bestelling::raw("(GROUP_CONCAT(menuitem.naam SEPARATOR ',')) as 'items'"), Bestelling::raw("(GROUP_CONCAT(menuItem_Bestellingen.aantal SEPARATOR ',')) as 'aantal'"))
+        ->select('bestellingen.id', 'bestellingen.opmerking', 'timeslots.TimeStart', 'timeslots.TimeStop', Bestelling::raw("(GROUP_CONCAT(menuitem.naam SEPARATOR ',')) as 'items'"), Bestelling::raw("(GROUP_CONCAT(menuItem_Bestellingen.aantal SEPARATOR ',')) as 'aantal'"))
         ->groupBy('bestellingen.id')
         ->orderBy('timeslots.TimeStart')
         ->get();
