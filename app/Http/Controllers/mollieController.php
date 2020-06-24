@@ -10,10 +10,12 @@ class mollieController extends Controller
 
   public function preparePayment()
     {
+      $optelSom = Bestellingen::where('user_id', '=', $invoer)->where('betaald', '=', false)->sum('bestellingen.prijsVoledigeBestelling');
+
       $payment = Mollie::api()->payments->create([
           "amount" => [
               "currency" => "EUR",
-              "value" => "10.00" // You must send the correct number of decimals, thus we enforce the use of strings
+              "value" => $optelSom // You must send the correct number of decimals, thus we enforce the use of strings
           ],
           "description" => "Order #12345",
           "redirectUrl" => 'https://webhook.site/e81932be-dd23-47aa-a442-56181b12029a',
