@@ -12,15 +12,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-      //  $this->call(RestaurantSeeder::class);
-    //    $this->call(MenuitemSeeder::class);
-      //  $this->call(RestaurantMenuitemSeeder::class);
+       $this->call(RestaurantSeeder::class);
+       $this->call(MenuitemSeeder::class);
+       $this->call(RestaurantMenuitemSeeder::class);
     //  $this->call(RoleSeeder::class);
-            // $this->call(UserSeeder::class);
-          //  $this->call(TimeslotsSeeder::class);
-  //        $this->call(TafelSeeder::class);
-      //    $this->call(BestellingenSeeder::class);
-        $this->call(MenuitemBestellingenSeeder::class);
+    //         $this->call(UserSeeder::class);
+    //        $this->call(TimeslotsSeeder::class);
+    //      $this->call(TafelSeeder::class);
+    //      $this->call(BestellingenSeeder::class);
+    //     $this->call(MenuitemBestellingenSeeder::class);
 
 
     }

@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
      'roles_id' => 2,
    ]); */
 
-   DB::table('Users')->insert([
+   DB::table('users')->insert([
      'naam' => 'Link',
      'email' => 'Zelda@hotmail.com',
      'password' => "kip",
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
      'roles_id' => 3,
      ]);
 
-     DB::table('Users')->insert([
+     DB::table('users')->insert([
        'naam' => 'Pikano',
        'email' => 'pokemon@hotmail.com',
        'password' => "testtest",
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
        'roles_id' => 2,
        ]);
 
-       DB::table('Users')->insert([
+       DB::table('users')->insert([
          'naam' => 'Jerry',
          'email' => 'plnt@hotmail.com',
          'password' => "plntplnt",

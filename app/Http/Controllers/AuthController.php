@@ -12,7 +12,7 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed'
+            'password' => 'required|string|confirmed',
             'rekeningNummer' => 'required|string',
             'adres' => 'required|string',
             'roles_id' => 'required|integer'
