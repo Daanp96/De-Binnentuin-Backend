@@ -6,26 +6,24 @@ use Carbon\Carbon;
 use App\User;
 class AuthController extends Controller
 {
-    /**
-     * Create user
-     *
-     * @param  [string] name
-     * @param  [string] email
-     * @param  [string] password
-     * @param  [string] password_confirmation
-     * @return [string] message
-     */
+
     public function signup(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|confirmed'
+            'rekeningNummer' => 'required|string',
+            'adres' => 'required|string',
+            'roles_id' => 'required|integer'
         ]);
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'rekeningNummer' => $request->rekeningnummer,
+            'adres'=>$request->adres,
+            'roles_id'=>$request->roles_id
         ]);
         $user->save();
         return response()->json([
@@ -33,16 +31,6 @@ class AuthController extends Controller
         ], 201);
     }
 
-    /**
-     * Login user and create token
-     *
-     * @param  [string] email
-     * @param  [string] password
-     * @param  [boolean] remember_me
-     * @return [string] access_token
-     * @return [string] token_type
-     * @return [string] expires_at
-     */
     public function login(Request $request)
     {
         $request->validate([
@@ -71,11 +59,6 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * Logout user (Revoke the token)
-     *
-     * @return [string] message
-     */
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
@@ -84,11 +67,7 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * Get the authenticated User
-     *
-     * @return [json] user object
-     */
+
     public function user(Request $request)
     {
         return response()->json($request->user());
