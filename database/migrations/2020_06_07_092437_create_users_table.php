@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('rekeningNummer');
-            $table->boolean('isMember');
+            $table->boolean('isMember')->default(false);
             $table->string('adres');
             $table->bigInteger('roles_id')->unsigned();
             // $table->foreign('roles_id')->references('id')->on('roles');
