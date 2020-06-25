@@ -33,6 +33,7 @@ Route::put('admin/kok/update', 'AdminController@updateBestelling');
 
 Route::get('/bestellingen/{invoer}/payment', 'mollieController@preparePayment');
 
+//Login
 Route::group([
     'prefix' => 'auth'
 ], function () {
