@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+  Route::post('login', [ 'as' => 'login', 'uses' => 'LoginController@do']);
+  Auth::routes();
     return view('welcome');
 });
 

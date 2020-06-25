@@ -11,34 +11,40 @@ class BestellingenSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('bestellingen')->insert([
-        'user_id' => 1,
-        'betaald' => false,
-        'tafeltimeslots_id' => 1,
-        'hoeveelMensen' => 2
+        DB::table('bestellingen')->insert([
+          'user_id' => 1,
+          'betaald' => true,
+          'tafeltimeslots_id' => 2,
+          'opmerking' => '',
+          'prijsVoledigeBestelling' => 24.5,
+          'hoeveelMensen' => 2,
         ]);
 
         DB::table('bestellingen')->insert([
-        'user_id' => 2,
-        'betaald' => false,
-        'tafeltimeslots_id' => 4,
-        'hoeveelMensen' => 5
+          'user_id' => 2,
+          'betaald' => true,
+          'tafeltimeslots_id' => 1,
+          'opmerking' => '',
+          'prijsVoledigeBestelling' => 13,
+          'hoeveelMensen' => 3,
         ]);
 
         DB::table('bestellingen')->insert([
-        'user_id' => 2,
-        'betaald' => false,
-        'tafeltimeslots_id' => 3,
-        'hoeveelMensen' => 2
+          'user_id' => 3,
+          'betaald' => true,
+          'tafeltimeslots_id' => 1,
+          'opmerking' => '',
+          'prijsVoledigeBestelling' => 4.5,
+          'hoeveelMensen' => 1,
         ]);
 
         DB::table('bestellingen')->insert([
-        'user_id' => 3,
-        'betaald' => false,
-        'tafeltimeslots_id' => 5,
-        'hoeveelMensen' => 2
+          'user_id' => 3,
+          'betaald' => false,
+          'tafeltimeslots_id' => 5,
+          'opmerking' => '',
+          'prijsVoledigeBestelling' => 7.5,
+          'hoeveelMensen' => 6,
         ]);
-
-
     }
 }
