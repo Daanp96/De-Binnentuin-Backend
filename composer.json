@@ -53,7 +53,7 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
             "if [ \"$OAUTH_PUBLIC_KEY\" != \"\" ]; then echo \"$OAUTH_PUBLIC_KEY\" > storage/oauth-public.key; fi",
             "if [ \"$OAUTH_PRIVATE_KEY\" != \"\" ]; then echo \"$OAUTH_PRIVATE_KEY\" > storage/oauth-private.key; fi"
         ],

@@ -30,4 +30,8 @@ class MenuitemController extends Controller
     public function index(){
         return Menuitem::all();
     }
+
+    public function sort(Request $request){
+      return Menuitem::orderBy("naam");
+    }
 }
