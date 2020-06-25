@@ -56,3 +56,10 @@ Route::put('/bestellingen/{invoer}/update', 'BestellingenController@update');
 Route::get('/users/{invoer}', 'UsersController@show');
 Route::put('/users/{invoer}/update', 'UsersController@update');
 Route::get('/bestellingen/{invoer}/rekening', 'BestellingenController@sumUp');
+
+//User story 12
+Route::get("/{restaurant}/tafels", "TafelController@RestaurantIndex");
+
+Route::get("/timeslots", "TimeslotsController@index");
+
+Route::get("/timeslots/tafel/{tafel}/{day}/{month}/{year}","TafelTimeslotsController@Show");
