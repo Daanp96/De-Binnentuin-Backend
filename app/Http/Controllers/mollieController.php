@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Mollie\Laravel\Facades\Mollie;
+use App\Auth;
+use App\Bestellingen;
 
 class mollieController extends Controller
 {
 
   public function preparePayment()
     {
+      $invoer = Auth::user;
       $optelSom = Bestellingen::where('user_id', '=', $invoer)->where('betaald', '=', false)->sum('bestellingen.prijsVoledigeBestelling');
 
       $payment = Mollie::api()->payments->create([
@@ -17,7 +20,7 @@ class mollieController extends Controller
               "currency" => "EUR",
               "value" => $optelSom // You must send the correct number of decimals, thus we enforce the use of strings
           ],
-          "description" => "Order #12345",
+          "description" => "Betaling de Binnentuin",
           "redirectUrl" => 'https://webhook.site/e81932be-dd23-47aa-a442-56181b12029a',
           "webhookUrl" => 'https://webhook.site/e81932be-dd23-47aa-a442-56181b12029a',
           "metadata" => [
@@ -29,6 +32,9 @@ class mollieController extends Controller
 
       // redirect customer to Mollie checkout page
       return redirect($payment->getCheckoutUrl(), 303);
+
+
     }
+
 
 }

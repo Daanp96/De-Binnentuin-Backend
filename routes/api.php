@@ -7,7 +7,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('payment', 'mollieController@preparePayment');
+Route::get('/bestellingen/{invoer}/payment', 'mollieController@preparePayment');
 
 Route::group([
     'prefix' => 'auth'
