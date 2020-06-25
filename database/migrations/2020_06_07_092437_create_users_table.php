@@ -15,8 +15,6 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            //gebruik hier de naam 'i_d' omdat normaal 'id' een error gaf dat die kolom al bestond
-            $table->bigInteger('i_d')->unsigned()->unique();
             $table->string('naam');
             $table->string('email')->unique();
             // $table->timestamp('email_verified_at')->nullable();
