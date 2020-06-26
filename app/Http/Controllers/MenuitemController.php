@@ -10,7 +10,7 @@ class MenuitemController extends Controller
 {
     public function show($restaurant, $submenu){
 
-        if($submenu == 'all'){
+        if($submenu == 'All'){
             $menuList =  DB::table('menuitem')->leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where("restaurant_menunumber","=", $restaurant)->groupBy('menuitem_id')->get();
         }else if($submenu == 'Chefs special') {
           $menuList =  DB::table('menuitem')->leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where([['chefSpecial','=', 1], ["restaurant_menunumber","=", $restaurant]])->groupBy('menuitem_id')->get();
