@@ -12,20 +12,18 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed'
+            'password' => 'required|string|confirmed',
             'rekeningNummer' => 'required|string',
             'adres' => 'required|string',
-            'roles_id' => 'required|integer'
         ]);
-        $user = new User([
+        $users = new User([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'rekeningNummer' => $request->rekeningnummer,
+            'rekeningNummer' => $request->rekeningNummer,
             'adres'=>$request->adres,
-            'roles_id'=>$request->roles_id
         ]);
-        $user->save();
+        $users->save();
         return response()->json([
             'message' => 'Successfully created user!'
         ], 201);
