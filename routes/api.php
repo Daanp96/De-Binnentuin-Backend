@@ -57,6 +57,7 @@ Route::put('/bestellingen/{invoer}/update', 'BestellingenController@update');
 Route::get('/users/{invoer}', 'UsersController@show');
 Route::put('/users/{invoer}/update', 'UsersController@update');
 Route::get('/bestellingen/{invoer}/rekening', 'BestellingenController@sumUp');
+Route::put('/bestellingen/new', 'BestellingenController@store');
 
 //User story 12
 Route::get("/{restaurant}/tafels", "TafelController@RestaurantIndex");

@@ -31,4 +31,10 @@ class BestellingenController extends Controller
 
       return $optelSom;
     }
-}
+
+    public function store(Request $request){
+      Bestellingen::new([
+        "shoppingcart" => $request->shoppingcart,
+      ]);
+    }
+  }
