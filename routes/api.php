@@ -24,4 +24,4 @@ Route::get('menu/{restaurant}/categories', 'MenuitemController@showCategories');
 
 Route::get('menu/{restaurant}/{all}', 'MenuitemController@show');
 
-Route::get('menu/sort', 'MenuitemController@sort');
+Route::post('menu/sort/', 'MenuitemController@sort');

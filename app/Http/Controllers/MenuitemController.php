@@ -32,6 +32,20 @@ class MenuitemController extends Controller
     }
 
     public function sort(Request $request){
-      return Menuitem::orderBy("naam");
+      if($request->sort === "alphabetical"){
+        return Menuitem::orderBy("naam")->get();
+
+      } else if($request->sort === "reverse"){
+        return Menuitem::orderBy("naam", "desc")->get();
+
+      } else if($request->sort === "high_to_low"){
+        return Menuitem::orderBy("prijs")->get();
+
+      } else if($request->sort === "low_to_high"){
+        return Menuitem::orderBy("prijs", "desc")->get();
+
+      }
+      
+      return Menuitem::all();
     }
 }
