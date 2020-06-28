@@ -48,6 +48,8 @@ Route::group([
     });
 });
 
+Route::get('/landing', 'LandingController@show');
+
 //alle {invoer} hier staat voor het id dat je wilt gebruiken
 //dus al wil je de eerste bestelling pak je /bestellingen/1
 //en /users/1 voor de eerste user
@@ -57,9 +59,9 @@ Route::put('/bestellingen/{invoer}/update', 'BestellingenController@update');
 Route::get('/users/{invoer}', 'UsersController@show');
 Route::put('/users/{invoer}/update', 'UsersController@update');
 Route::get('/bestellingen/{invoer}/rekening', 'BestellingenController@sumUp');
-Route::put('/bestellingen/new', 'BestellingenController@store');
+//Route::put('/bestellingen/new', 'BestellingenController@store');
 //moet een put worden is voor de bestellingen
-Route::get('/bestellingen/voerIn/{betaald}', 'BestellingenController@inputBestellling');
+Route::get('/bestellingen/new/{betaald}', 'BestellingenController@inputBestellling');
 
 //User story 12
 Route::get("/{restaurant}/tafels", "TafelController@RestaurantIndex");

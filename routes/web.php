@@ -18,5 +18,3 @@ Route::get('/', function () {
   Auth::routes();
     return view('welcome');
 });
-
-Route::get('/landing', 'LandingController@show');

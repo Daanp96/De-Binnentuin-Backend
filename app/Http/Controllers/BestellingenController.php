@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Bestellingen;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class BestellingenController extends Controller
 {
@@ -40,16 +41,23 @@ class BestellingenController extends Controller
     }
 
     //plaats nieuwe bestelling in de database
-    public function inputBestellling($betaald){
+    public function inputBestellling(Request $request, $betaald){
+      $user = Auth::id();
       //&& Auth::user == null
-      if($betaald == "true"){
-        $last = Bestellingen::insertGetId(["user_id" => "1","betaald" => 1,"tafeltimeslots_id" => 1, "prijsVoledigeBestelling" => 5, "hoeveelMensen" => 0]);
+      if($betaald == "true" && $user == null){
+        $last = Bestellingen::insertGetId(["user_id" => "1", "betaald" => 1,"tafeltimeslots_id" => 1, "prijsVoledigeBestelling" => 5, "hoeveelMensen" => 0]);
+      }else if($betaald == "true" && $user != null){
+        $last = Bestellingen::insertGetId(["user_id" => $user,"betaald" => 1,"tafeltimeslots_id" => 1, "prijsVoledigeBestelling" => 5, "hoeveelMensen" => 0]);
       }else{
-        $last = "beep";
+        $last = Bestellingen::insertGetId(["user_id" => $user,"betaald" => 0,"tafeltimeslots_id" => 1, "prijsVoledigeBestelling" => 5, "hoeveelMensen" => 0]);
       }
+
+      //generic values
       $shoppingcart = collect([["id" => 10],["id" => 10],["id" => 20],["id" => 10]]);
       $keyvalueArray = collect([]);
       $shoppingcart->mapWithKeys(function ($cart) use($keyvalueArray, $last){
+
+      //stop de cart in de keyvalueArray en fix het aantal
         if($keyvalueArray->isNotEmpty()){
             if($keyvalueArray->contains('menuitem_id', $cart["id"])){
               $input = $keyvalueArray->where("menuitem_id", $cart["id"])->pluck('aantal')->first() + 1;
@@ -57,7 +65,6 @@ class BestellingenController extends Controller
                 return $item["menuitem_id"] == $cart["id"];
               }));
               $keyvalueArray->push(["bestellingen_id" => $last, "menuitem_id" => $cart["id"], "aantal"=> $input]);
-              //$keyvalueArray->push($newValue);
             }else{
               $keyvalueArray->push(["bestellingen_id" => $last, "menuitem_id" => $cart["id"], "aantal"=> 1]);
             }
