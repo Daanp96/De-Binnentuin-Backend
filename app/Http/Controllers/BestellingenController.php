@@ -44,12 +44,14 @@ class BestellingenController extends Controller
     public function inputBestellling(Request $request, $betaald){
       $user = Auth::id();
       //&& Auth::user == null
+      $totaalprijs = $request->totaalprijs;
+      $tafeltimeslot = $request->tafeltimeslot;
       if($betaald == "true" && $user == null){
-        $last = Bestellingen::insertGetId(["user_id" => "1", "betaald" => 1,"tafeltimeslots_id" => 1, "prijsVoledigeBestelling" => 5, "hoeveelMensen" => 0]);
+        $last = Bestellingen::insertGetId(["user_id" => "1", "betaald" => 1,"tafeltimeslots_id" => $tafeltimeslot, "prijsVoledigeBestelling" => $totaalprijs, "hoeveelMensen" => 0]);
       }else if($betaald == "true" && $user != null){
-        $last = Bestellingen::insertGetId(["user_id" => $user,"betaald" => 1,"tafeltimeslots_id" => 1, "prijsVoledigeBestelling" => 5, "hoeveelMensen" => 0]);
+        $last = Bestellingen::insertGetId(["user_id" => $user,"betaald" => 1,"tafeltimeslots_id" => $tafeltimeslot, "prijsVoledigeBestelling" => $totaalprijs, "hoeveelMensen" => 0]);
       }else{
-        $last = Bestellingen::insertGetId(["user_id" => $user,"betaald" => 0,"tafeltimeslots_id" => 1, "prijsVoledigeBestelling" => 5, "hoeveelMensen" => 0]);
+        $last = Bestellingen::insertGetId(["user_id" => $user,"betaald" => 0,"tafeltimeslots_id" => $tafeltimeslot, "prijsVoledigeBestelling" => $totaalprijs, "hoeveelMensen" => 0]);
       }
 
       //generic values
