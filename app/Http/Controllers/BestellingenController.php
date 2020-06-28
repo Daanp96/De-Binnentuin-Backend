@@ -53,26 +53,26 @@ class BestellingenController extends Controller
       }
 
       //generic values
-      $shoppingcart = collect([["id" => 10],["id" => 10],["id" => 20],["id" => 10]]);
+      $shoppingcart = $request->shoppingcart;
       $keyvalueArray = collect([]);
-      $shoppingcart->mapWithKeys(function ($cart) use($keyvalueArray, $last){
+      foreach($shoppingcart as $cart){
+      //$shoppingcart->mapWithKeys(function ($cart) use($keyvalueArray, $last){
 
       //stop de cart in de keyvalueArray en fix het aantal
-        if($keyvalueArray->isNotEmpty()){
-            if($keyvalueArray->contains('menuitem_id', $cart["id"])){
-              $input = $keyvalueArray->where("menuitem_id", $cart["id"])->pluck('aantal')->first() + 1;
-              $keyvalueArray->forget($keyvalueArray->search(function($item, $key) use($cart){
-                return $item["menuitem_id"] == $cart["id"];
-              }));
-              $keyvalueArray->push(["bestellingen_id" => $last, "menuitem_id" => $cart["id"], "aantal"=> $input]);
-            }else{
-              $keyvalueArray->push(["bestellingen_id" => $last, "menuitem_id" => $cart["id"], "aantal"=> 1]);
+         if($keyvalueArray->isNotEmpty()){
+             if($keyvalueArray->contains('menuitem_id', $cart['id'])){
+              $input = $keyvalueArray->where("menuitem_id", $cart['id'])->pluck('aantal')->first() + 1;
+             $keyvalueArray->forget($keyvalueArray->search(function($item, $key) use($cart){
+               return $item["menuitem_id"] == $cart['id'];
+             }));
+              $keyvalueArray->push(["bestellingen_id" => $last, "menuitem_id" => $cart['id'], "aantal"=> $input]);
+           }else{
+             $keyvalueArray->push(["bestellingen_id" => $last, "menuitem_id" => $cart['id'], "aantal"=> 1]);
             }
-          }else{
-          $keyvalueArray->push(["bestellingen_id" => $last, "menuitem_id" => $cart["id"], "aantal"=> 1]);
+           }else{
+          $keyvalueArray->push(["bestellingen_id" => $last, "menuitem_id" => $cart['id'], "aantal"=> 1]);
         }
-      return $keyvalueArray;
-      });
+      }
       DB::table("MenuItem_Bestellingen")->insert($keyvalueArray->toArray());
     }
 }
