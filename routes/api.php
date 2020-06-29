@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('menu', 'MenuitemController@index');
 
-Route::get('menu/sort/{option}/{restaurant}', 'MenuitemController@sort');
+Route::get('menu/sort/{option}/{restaurant}/{categorie}', 'MenuitemController@sort');
 
 Route::get('menu/{restaurant}/categories', 'MenuitemController@showCategories');
 
