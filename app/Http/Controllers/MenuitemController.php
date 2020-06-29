@@ -31,17 +31,17 @@ class MenuitemController extends Controller
         return Menuitem::all();
     }
 
-    public function sort(Request $request){
-      if($request->sort === "alphabetical"){
+    public function sort($sort){
+      if($sort === "alphabetical"){
         return Menuitem::orderBy("naam")->get();
 
-      } else if($request->sort === "reverse"){
+      } else if($sort === "reverse"){
         return Menuitem::orderBy("naam", "desc")->get();
 
-      } else if($request->sort === "high_to_low"){
+      } else if($sort === "high_to_low"){
         return Menuitem::orderBy("prijs")->get();
 
-      } else if($request->sort === "low_to_high"){
+      } else if($sort === "low_to_high"){
         return Menuitem::orderBy("prijs", "desc")->get();
 
       }
