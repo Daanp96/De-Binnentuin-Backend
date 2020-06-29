@@ -31,18 +31,18 @@ class MenuitemController extends Controller
         return Menuitem::all();
     }
 
-    public function sort($sort){
+    public function sort($sort, $restaurant){
       if($sort === "alphabetical"){
-        return Menuitem::orderBy("naam")->get();
+        return Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where("restaurant_menunumber","=", $restaurant)->groupBy('menuitem_id')->orderBy("naam")->get();
 
       } else if($sort === "reverse"){
-        return Menuitem::orderBy("naam", "desc")->get();
+        return Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where("restaurant_menunumber","=", $restaurant)->groupBy('menuitem_id')->orderBy("naam", "desc")->get();
 
       } else if($sort === "high_to_low"){
-        return Menuitem::orderBy("prijs")->get();
+        return Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where("restaurant_menunumber","=", $restaurant)->groupBy('menuitem_id')->orderBy("prijs")->get();
 
       } else if($sort === "low_to_high"){
-        return Menuitem::orderBy("prijs", "desc")->get();
+        return Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where("restaurant_menunumber","=", $restaurant)->groupBy('menuitem_id')->orderBy("prijs", "desc")->get();
 
       }
       
