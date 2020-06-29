@@ -26,7 +26,6 @@ class UserSeeder extends Seeder
      'email' => 'Zelda@hotmail.com',
      'password' => "kip",
      'rekeningNummer' => 'k',
-     'isMember' => true,
      'adres' => 'Leiden straat 34',
      'roles_id' => 3,
      ]);
@@ -36,7 +35,6 @@ class UserSeeder extends Seeder
        'email' => 'pokemon@hotmail.com',
        'password' => "testtest",
        'rekeningNummer' => 'l',
-       'isMember' => false,
        'adres' => 'Haarlem 2',
        'roles_id' => 2,
        ]);
@@ -46,7 +44,6 @@ class UserSeeder extends Seeder
          'email' => 'plnt@hotmail.com',
          'password' => "plntplnt",
          'rekeningNummer' => '2',
-         'isMember' => true,
          'adres' => 'Westlaan 21',
          'roles_id' => 1,
          ]);

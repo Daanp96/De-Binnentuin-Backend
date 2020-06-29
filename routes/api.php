@@ -32,6 +32,7 @@ Route::get('admin/kok', 'AdminController@showBestellingen');
 Route::put('admin/kok/update', 'AdminController@updateBestelling');
 
 Route::get('/bestellingen/{invoer}/payment', 'mollieController@preparePayment');
+Route::get('/bestellingen/{prijs}/betaalnu', 'mollieController@nuPayment');
 
 //Login
 Route::group([
