@@ -130,7 +130,7 @@ class AdminController extends Controller
       }
 
       public function showBestellingen(){
-        $bestellingen = Bestelling::where('isKlaar', '=', 0)
+        $bestellingen = Bestelling::where('bestellingen.isKlaar', '=', false)
         ->join('menuitem_bestellingen', 'menuitem_bestellingen.bestellingen_id', '=', 'bestellingen.id')
         ->leftjoin('menuitem', 'menuitem.id', '=', 'menuItem_Bestellingen.menuitem_id')
         ->leftjoin('tafel_timeslots', 'tafel_timeslots.id', '=', 'bestellingen.tafeltimeslots_id')

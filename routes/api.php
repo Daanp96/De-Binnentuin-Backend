@@ -28,8 +28,8 @@ Route::get('/admin/{restaurant}', 'AdminController@Restaurants');
 Route::put('/admin/change', 'AdminController@UpdateRestaurant');
 
 //Routes voor de koks schermen
-Route::get('admin/kok', 'AdminController@showBestellingen');
-Route::put('admin/kok/update', 'AdminController@updateBestelling');
+Route::get('/admins/kok', 'AdminController@showBestellingen');
+Route::put('/admin/kok/update', 'AdminController@updateBestelling');
 
 Route::get('/bestellingen/{invoer}/payment', 'mollieController@preparePayment');
 Route::get('/bestellingen/{prijs}/betaalnu', 'mollieController@nuPayment');
