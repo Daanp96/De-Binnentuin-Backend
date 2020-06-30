@@ -33,22 +33,38 @@ class MenuitemController extends Controller
     }
 
     public function sort($sort, $restaurant, $submenu){
-      if($sort === "alphabetical"){
-        return Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where([['submenu','=', $submenu], ["restaurant_menunumber","=", $restaurant]])->groupBy("menuitem_id")->orderBy("naam")->get();
+      
+      if($submenu === "All"){
+        $menuitem = Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where("restaurant_menunumber","=", $restaurant)->groupBy("menuitem_id");
+      
+      } else if($submenu === "Chefs special") {
+        $menuitem = Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where([['chefSpecial','=', 1], ["restaurant_menunumber","=", $restaurant]])->groupBy('menuitem_id');
+      
+      } else if ($submenu === "Best selling") {
+        return [Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where("restaurant_menunumber","=", $restaurant)->orderBy('aantalVerkocht', 'ASC')->first()];
+      
+      } else {
+        $menuitem = Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where([['submenu','=', $submenu], ["restaurant_menunumber","=", $restaurant]])->groupBy("menuitem_id");
+      
+      }
 
+      if($sort === "alphabetical"){
+        $menuitem = $menuitem->orderBy("naam")->get();
+        
       } else if($sort === "reverse"){
-        return Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where([['submenu','=', $submenu], ["restaurant_menunumber","=", $restaurant]])->groupBy('menuitem_id')->orderBy("naam", "desc")->get();
+        $menuitem = $menuitem->orderBy("naam", "desc")->get();
 
       } else if($sort === "high_to_low"){
-        return Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where([['submenu','=', $submenu], ["restaurant_menunumber","=", $restaurant]])->groupBy('menuitem_id')->orderBy("prijs")->get();
+        $menuitem = $menuitem->orderBy("prijs", "desc")->get();
 
       } else if($sort === "low_to_high"){
-        return Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where([['submenu','=', $submenu], ["restaurant_menunumber","=", $restaurant]])->groupBy('menuitem_id')->orderBy("prijs", "desc")->get();
+        $menuitem = $menuitem->orderBy("prijs")->get();
 
       } else if($sort === "default"){
-        return Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where([['submenu','=', $submenu], ["restaurant_menunumber","=", $restaurant]])->groupBy('menuitem_id')->get();
-      }
-      
-      return Menuitem::all();
+        $menuitem = $menuitem->get();
+      } 
+
+      return $menuitem;
+
     }
 }
