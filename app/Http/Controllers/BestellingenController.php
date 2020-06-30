@@ -21,7 +21,7 @@ class BestellingenController extends Controller
     }
 
     public function update(Request $request, $invoer){
-      Bestellingen::where('user_id', '=', $invoer)->update(
+      Bestellingen::where('id', '=', $invoer)->update(
         [
           "opmerking" => $request->opmerking,
         ]

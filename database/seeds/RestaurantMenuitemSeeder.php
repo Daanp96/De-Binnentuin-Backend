@@ -222,7 +222,26 @@ class RestaurantMenuitemSeeder extends Seeder
             'restaurant_menunumber' => 1,
             'submenu' => 'Cold Drinks',
             'menuitem_id' => '40',
-          )
+          ),
+          //Dakterras
+          array(
+            'id' => '41',
+            'restaurant_menunumber' => 2,
+            'submenu' => 'Kaartjes',
+            'menuitem_id' => '41',
+          ),
+          array(
+            'id' => '42',
+            'restaurant_menunumber' => 2,
+            'submenu' => 'Kaartjes',
+            'menuitem_id' => '42',
+          ),
+          array(
+            'id' => '43',
+            'restaurant_menunumber' => 2,
+            'submenu' => 'Kaartjes',
+            'menuitem_id' => '43',
+          ),
         ));
     }
 }

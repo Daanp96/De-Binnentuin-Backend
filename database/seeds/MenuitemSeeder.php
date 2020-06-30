@@ -12,6 +12,8 @@ class MenuitemSeeder extends Seeder
     public function run()
     {
       DB::table('menuitem')->insert(array(
+
+
               // Snacks
               array(
                 'naam' => 'Organic Yoghurt',
@@ -428,7 +430,44 @@ class MenuitemSeeder extends Seeder
                 'fotolocatie' => '',
                 'chefSpecial' => '0',
                 'aantalVerkocht' => '0',
-              )
+              ),
+              //Dakterras Menu
+              array(
+                'naam' => 'Kaartje',
+                'beschrijving' => 'Entree & 6 strippen',
+                'allergenen' => '',
+                'categorie' => 'kaarten',
+                'diet' => '',
+                'prijs' => '10.00',
+                'fotolocatie' => '',
+                'chefSpecial' => '0',
+                'aantalVerkocht' => '0',
+              ),
+              array(
+                'naam' => 'Kaartje Regulier',
+                'beschrijving' => 'Entree, 6 strippen & snacks',
+                'allergenen' => '',
+                'categorie' => 'kaarten',
+                'diet' => '',
+                'prijs' => '17.00',
+                'fotolocatie' => '',
+                'chefSpecial' => '0',
+                'aantalVerkocht' => '0',
+              ),
+              array(
+                'naam' => 'Kaartje Large',
+                'beschrijving' => 'Entree, 9 strippen & me...cks',
+                'allergenen' => '',
+                'categorie' => 'kaarten',
+                'diet' => '',
+                'prijs' => '27.00',
+                'fotolocatie' => '',
+                'chefSpecial' => '1',
+                'aantalVerkocht' => '0',
+              ),
+
+
+
             ));
     }
 }
