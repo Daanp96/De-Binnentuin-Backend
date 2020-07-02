@@ -11,30 +11,19 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    /* Hieronder zijn de veriabalen opgenomen die worden toegevoegd aan de database. Ook zie je dat er verschil word gemaakt tussen fillable, hidden en casts */
+
     public $timestamps = false;
     protected $fillable = [
         'naam', 'email', 'password', 'rekeningNummer', 'adres'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

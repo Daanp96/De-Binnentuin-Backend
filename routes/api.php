@@ -7,10 +7,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Alle /menu routes
 Route::get('menu', 'MenuitemController@index');
-
+Route::get('menu/sort/{option}/{restaurant}/{categorie}', 'MenuitemController@sort');
 Route::get('menu/{restaurant}/categories', 'MenuitemController@showCategories');
 Route::get('menu/{restaurant}/{all}', 'MenuitemController@show');
+
 Route::get('admin/kok', 'AdminController@showBestellingen');
 Route::put('admin/kok/update', 'AdminController@updateBestelling');
 
@@ -28,9 +30,10 @@ Route::get('/admin/{restaurant}', 'AdminController@Restaurants');
 Route::put('/admin/change', 'AdminController@UpdateRestaurant');
 
 //Routes voor de koks schermen
-Route::get('admin/kok', 'AdminController@showBestellingen');
-Route::put('admin/kok/update', 'AdminController@updateBestelling');
+Route::get('/admins/kok', 'AdminController@showBestellingen');
+Route::put('/admin/kok/update', 'AdminController@updateBestelling');
 
+//Routes voor Mollie 
 Route::get('/bestellingen/{invoer}/payment', 'mollieController@preparePayment');
 Route::get('/bestellingen/{prijs}/betaalnu', 'mollieController@nuPayment');
 
