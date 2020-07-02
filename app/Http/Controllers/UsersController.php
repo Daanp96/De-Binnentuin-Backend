@@ -12,12 +12,4 @@ class UsersController extends Controller
     $opmerking = users::where('i_d', '=', $invoer)->first();
     return $opmerking;
   }
-
-  public function update(Request $request, $invoer){
-    users::where('i_d', '=', $invoer)->update(
-      [
-        "rekeningNummer" => $request->prijs,
-      ]
-    );
-  }
 }

@@ -27,7 +27,7 @@ class BestellingenController extends Controller
         ]
       );
     }
-
+    //functie om aan het eind van de maand van een user alle niet betaalde bestellingen op te tellen zodat je aan het eind van de maand het bedrag kan afschrijven van een rekening
     public function sumUp($invoer){
       $optelSom = Bestellingen::where('user_id', '=', $invoer)->where('betaald', '=', false)->sum('bestellingen.prijsVoledigeBestelling');
 
