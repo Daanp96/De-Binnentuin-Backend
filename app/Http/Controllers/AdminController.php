@@ -35,6 +35,7 @@ class AdminController extends Controller
 
       public function UpdateRestaurant(Request $request){
         $open_close = Restaurant::where('name', '=', $request->name)->first();
+        //zet de 1 en 0 om in false of true, zodat die in de DB geplaats kunnen worden
         if($request->isOpen == '1'){
           $request->isOpen = true;
         }
@@ -129,6 +130,8 @@ class AdminController extends Controller
         }
       }
 
+      //pakt eerst alle bestellingen die nog neit klaar zijn, en daarna joint hij op verschillende
+      //stukken om de namen van de gerechten te pakken
       public function showBestellingen(){
         $bestellingen = Bestelling::where('bestellingen.isKlaar', '=', false)
         ->join('menuitem_bestellingen', 'menuitem_bestellingen.bestellingen_id', '=', 'bestellingen.id')

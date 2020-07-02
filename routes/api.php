@@ -33,6 +33,7 @@ Route::put('/admin/change', 'AdminController@UpdateRestaurant');
 Route::get('/admins/kok', 'AdminController@showBestellingen');
 Route::put('/admin/kok/update', 'AdminController@updateBestelling');
 
+//Routes voor Mollie 
 Route::get('/bestellingen/{invoer}/payment', 'mollieController@preparePayment');
 Route::get('/bestellingen/{prijs}/betaalnu', 'mollieController@nuPayment');
 
