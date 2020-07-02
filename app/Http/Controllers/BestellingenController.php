@@ -44,8 +44,10 @@ class BestellingenController extends Controller
     public function inputBestellling(Request $request, $betaald){
       $user = Auth::id();
       //&& Auth::user == null
+      //haal de waardes op
       $totaalprijs = $request->totaalprijs;
       $tafeltimeslot = $request->tafeltimeslot;
+      //voer hier de bestelling in en hou de id achter
       if($betaald == "true" && $user == null){
         $last = Bestellingen::insertGetId(["user_id" => "1", "betaald" => 1,"tafeltimeslots_id" => $tafeltimeslot, "prijsVoledigeBestelling" => $totaalprijs, "hoeveelMensen" => 0]);
       }else if($betaald == "true" && $user != null){
@@ -54,14 +56,13 @@ class BestellingenController extends Controller
         $last = Bestellingen::insertGetId(["user_id" => $user,"betaald" => 0,"tafeltimeslots_id" => $tafeltimeslot, "prijsVoledigeBestelling" => $totaalprijs, "hoeveelMensen" => 0]);
       }
 
-      //generic values
       $shoppingcart = $request->shoppingcart;
       $keyvalueArray = collect([]);
+      //loop over de hele shoppingcart heen en stop ze in de keyvalueArray
       foreach($shoppingcart as $cart){
-      //$shoppingcart->mapWithKeys(function ($cart) use($keyvalueArray, $last){
-
       //stop de cart in de keyvalueArray en fix het aantal
          if($keyvalueArray->isNotEmpty()){
+           //als het al in de array zit voeg er 1 extra aan toe
              if($keyvalueArray->contains('menuitem_id', $cart['id'])){
               $input = $keyvalueArray->where("menuitem_id", $cart['id'])->pluck('aantal')->first() + 1;
              $keyvalueArray->forget($keyvalueArray->search(function($item, $key) use($cart){
@@ -75,6 +76,7 @@ class BestellingenController extends Controller
           $keyvalueArray->push(["bestellingen_id" => $last, "menuitem_id" => $cart['id'], "aantal"=> 1]);
         }
       }
+      //insert de hele array in de database
       DB::table("MenuItem_Bestellingen")->insert($keyvalueArray->toArray());
     }
 }
