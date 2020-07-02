@@ -28,12 +28,15 @@ class MenuitemController extends Controller
       return response()->json($categoryList);
     }
 
+    // Returned alle items
     public function index(){
         return Menuitem::all();
     }
 
+    // Geeft op basis van de sorteer optie, restaurant en submenu een gesorteerde itemList terug.
     public function sort($sort, $restaurant, $submenu){
 
+      // Kijkt naar in welke categorie je je bevindt.
       if($submenu === "All"){
         $menuitem = Menuitem::leftJoin('restaurant_menuitem', 'restaurant_menuitem.menuitem_id','=','menuitem.id')->where("restaurant_menunumber","=", $restaurant)->groupBy("menuitem_id");
 
@@ -48,6 +51,7 @@ class MenuitemController extends Controller
 
       }
 
+      // Alle sorteeropties
       if($sort === "alphabetical"){
         $menuitem = $menuitem->orderBy("naam")->get();
 

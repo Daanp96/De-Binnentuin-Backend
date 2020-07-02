@@ -7,10 +7,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Alle /menu routes
 Route::get('menu', 'MenuitemController@index');
 Route::get('menu/sort/{option}/{restaurant}/{categorie}', 'MenuitemController@sort');
 Route::get('menu/{restaurant}/categories', 'MenuitemController@showCategories');
 Route::get('menu/{restaurant}/{all}', 'MenuitemController@show');
+
 Route::get('admin/kok', 'AdminController@showBestellingen');
 Route::put('admin/kok/update', 'AdminController@updateBestelling');
 
