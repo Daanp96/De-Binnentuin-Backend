@@ -45,15 +45,16 @@ class BestellingenController extends Controller
       $user = Auth::id();
       //&& Auth::user == null
       //haal de waardes op
+      $opmerking = $request->opmerking;
       $totaalprijs = $request->totaalprijs;
       $tafeltimeslot = $request->tafeltimeslot;
       //voer hier de bestelling in en hou de id achter
       if($betaald == "true" && $user == null){
-        $last = Bestellingen::insertGetId(["user_id" => "1", "betaald" => 1,"tafeltimeslots_id" => $tafeltimeslot, "prijsVoledigeBestelling" => $totaalprijs, "hoeveelMensen" => 0]);
+        $last = Bestellingen::insertGetId(["user_id" => "1", "betaald" => 1,"tafeltimeslots_id" => $tafeltimeslot, 'opmerking' => $opmerking, "prijsVoledigeBestelling" => $totaalprijs, "hoeveelMensen" => 0]);
       }else if($betaald == "true" && $user != null){
-        $last = Bestellingen::insertGetId(["user_id" => $user,"betaald" => 1,"tafeltimeslots_id" => $tafeltimeslot, "prijsVoledigeBestelling" => $totaalprijs, "hoeveelMensen" => 0]);
+        $last = Bestellingen::insertGetId(["user_id" => "1","betaald" => 1,"tafeltimeslots_id" => $tafeltimeslot, 'opmerking' => $opmerking, "prijsVoledigeBestelling" => $totaalprijs, "hoeveelMensen" => 0]);
       }else{
-        $last = Bestellingen::insertGetId(["user_id" => $user,"betaald" => 0,"tafeltimeslots_id" => $tafeltimeslot, "prijsVoledigeBestelling" => $totaalprijs, "hoeveelMensen" => 0]);
+        $last = Bestellingen::insertGetId(["user_id" => '1',"betaald" => 0,"tafeltimeslots_id" => $tafeltimeslot, 'opmerking' => $opmerking, "prijsVoledigeBestelling" => $totaalprijs, "hoeveelMensen" => 0]);
       }
 
       $shoppingcart = $request->shoppingcart;
